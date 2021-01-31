@@ -1,6 +1,7 @@
 package org.example.srpd;
 
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.MediaType;
@@ -47,6 +48,19 @@ public class RestHandler {
                 .uri(uriBuilder -> uriBuilder
                         .path("/employee/{id}")
                         .build(serverRequest.pathVariable("id")))
+                .exchange()
+                .flatMap((ClientResponse mapper) -> {
+                    return ServerResponse.status(mapper.statusCode())
+                            .headers(c -> mapper.headers().asHttpHeaders().forEach((name, value) -> c.put(name, value)))
+                            .body(mapper.bodyToFlux(DataBuffer.class), DataBuffer.class);
+                });
+    }
+
+    public Mono<ServerResponse> createNewEmployeeRecord(ServerRequest serverRequest) {
+        return webClient
+                .post()
+                .uri("/create")
+                .body(Mono.just(serverRequest.bodyToMono(JSONObject.class)), JSONObject.class)
                 .exchange()
                 .flatMap((ClientResponse mapper) -> {
                     return ServerResponse.status(mapper.statusCode())

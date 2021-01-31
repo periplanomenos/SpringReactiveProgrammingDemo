@@ -9,6 +9,9 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
+
 /**
  * Class: RestRouter
  */
@@ -19,12 +22,16 @@ public class RestRouter {
     @Bean
     public RouterFunction<ServerResponse> rout(RestHandler restHandler) {
         return RouterFunctions
-                .route(RequestPredicates.GET("/hello").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
+                .route(RequestPredicates.GET("/hello").and(accept(MediaType.TEXT_PLAIN)),
                         restHandler::hello)
-                .andRoute(RequestPredicates.GET("/employees").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
+                .andRoute(RequestPredicates.GET("/employees").and(accept(MediaType.TEXT_PLAIN)),
                         restHandler::getAllEmployeeData)
-                .andRoute(RequestPredicates.GET("/employees/{id}").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
-                        restHandler::getSingleEmployeeData);
+                .andRoute(RequestPredicates.GET("/employee/{id}").and(accept(MediaType.TEXT_PLAIN)),
+                        restHandler::getSingleEmployeeData)
+                .andRoute(RequestPredicates.POST("/create")
+                                .and(accept(MediaType.APPLICATION_JSON))
+                                .and(contentType(MediaType.APPLICATION_JSON)),
+                        restHandler::createNewEmployeeRecord);
     }
 
 }
