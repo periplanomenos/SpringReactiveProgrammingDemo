@@ -21,7 +21,7 @@ import reactor.netty.http.client.HttpClient;
 public class WebClientConfiguration {
 
     @Bean
-    public WebClient getWebClient() {
+    public WebClient getWebClient(WebClient.Builder webClientBuilder) {
         HttpClient httpClient = HttpClient.create()
                 .tcpConfiguration(client ->
                         client.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
@@ -31,7 +31,7 @@ public class WebClientConfiguration {
 
         ClientHttpConnector connector = new ReactorClientHttpConnector(httpClient);
 
-        return WebClient.builder()
+        return webClientBuilder
                 .baseUrl("http://dummy.restapiexample.com/api/v1")
                 .clientConnector(connector)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
