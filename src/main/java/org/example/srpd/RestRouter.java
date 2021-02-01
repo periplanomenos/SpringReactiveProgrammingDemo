@@ -20,7 +20,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class RestRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> rout(RestHandler restHandler) {
+    public RouterFunction<ServerResponse> route(RestHandler restHandler) {
         return RouterFunctions
                 .route(RequestPredicates.GET("/hello").and(accept(MediaType.TEXT_PLAIN)),
                         restHandler::hello)
