@@ -1,4 +1,4 @@
-package org.example.srpd;
+package org.example.srpd.configuration;
 
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;

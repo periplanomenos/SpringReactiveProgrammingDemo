@@ -1,6 +1,7 @@
-package org.example.srpd;
+package org.example.srpd.configuration;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.srpd.controller.component.RestHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

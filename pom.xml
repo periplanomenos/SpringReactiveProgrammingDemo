@@ -14,6 +14,9 @@
         <maven.compiler.target>11</maven.compiler.target>
         <lombok.version>1.18.16</lombok.version>
         <json.version>20201115</json.version>
+        <jjwt-api.version>0.11.1</jjwt-api.version>
+        <jjwt-impl.version>0.11.1</jjwt-impl.version>
+        <jjwt-jackson.version>0.11.1</jjwt-jackson.version>
     </properties>
 
     <parent>
@@ -37,6 +40,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -45,10 +52,21 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt-impl.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt-jackson.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>

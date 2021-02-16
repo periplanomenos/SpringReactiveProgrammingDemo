@@ -1,4 +1,4 @@
-package org.example.srpd;
+package org.example.srpd.controller.component;
 
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;

@@ -3,3 +3,12 @@ management:
     web:
       exposure:
         include: "*"
+
+jjwt:
+  secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+  expiration: 28800
+  password:
+    encoder:
+      secret: mysecret
+      iteration: 33
+      keylength: 256
