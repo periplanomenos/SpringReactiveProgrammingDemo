@@ -32,7 +32,10 @@ public class RestRouter {
                 .andRoute(RequestPredicates.POST("/create")
                                 .and(accept(MediaType.APPLICATION_JSON))
                                 .and(contentType(MediaType.APPLICATION_JSON)),
-                        restHandler::createNewEmployeeRecord);
+                        restHandler::createNewEmployeeRecord)
+                .andRoute(RequestPredicates.GET("/hazelcast/{imapKey}/{objectKey}")
+                                .and(accept(MediaType.TEXT_PLAIN)),
+                        restHandler::getHazelcastMapByKeys);
     }
 
 }
