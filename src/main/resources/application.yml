@@ -12,3 +12,8 @@ jjwt:
       secret: mysecret
       iteration: 33
       keylength: 256
+
+hazelcast-kubernetes:
+  my-digital-bank:
+    namespace: somewhere
+    service-name: my-digital-bank

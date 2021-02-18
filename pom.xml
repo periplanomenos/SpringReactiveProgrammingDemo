@@ -21,6 +21,7 @@
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <hazelcast-client.version>3.12.12</hazelcast-client.version>
     </properties>
 
     <parent>
@@ -51,15 +52,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.hazelcast</groupId>
-            <artifactId>hazelcast</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.hazelcast</groupId>
-            <artifactId>hazelcast-spring</artifactId>
         </dependency>
 
         <dependency>
@@ -126,6 +118,11 @@
             <version>${commons-lang3.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-client</artifactId>
+            <version>${hazelcast-client.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
